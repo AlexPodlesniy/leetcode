@@ -5,18 +5,16 @@ class LinkedListCycle {
     public boolean hasCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
-        while(true) {
-            try {
-                slow = slow.next;
-                fast = fast.next;
-                fast = fast.next;
-                if (slow == fast) {
-                    return true;
-                }
-            } catch (NullPointerException e) {
-                return false;
+        while(fast!=null && fast.next!=null) {
+
+            slow = slow.next;
+            fast = fast.next;
+            fast = fast.next;
+            if (slow == fast) {
+                return true;
             }
         }
+        return false;
     }
 
     public static class ListNode {
